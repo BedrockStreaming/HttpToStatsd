@@ -1,7 +1,7 @@
 # installation
 
 ```shell
-npm install 
+npm install
 ```
 
 ... profit !
@@ -13,7 +13,7 @@ node app
 ```
 or if you want to choose the port (to run multiple instance) :
 ```
-export NODE_PORT=8081 && node app 
+export NODE_PORT=8081 && node app
 ```
 
 # usage in dev (loading dev config)
@@ -70,5 +70,3 @@ for increment, value is ```'1'```
 npm test
 ```
 
-# todo
- * open source it
