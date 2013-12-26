@@ -1,0 +1,14 @@
+{
+	"Server": {
+		"port": 8080,
+		"secretKey": "raoulgotasecretkey",
+		"statsdServers": [
+		    {"host":"localhost", "port":"8125"},
+		    {"host":"localhost", "port":"8126"},
+		    {"host":"localhost", "port":"8127"},
+		    {"host":"localhost", "port":"8128"},
+		    {"host":"localhost", "port":"8129"},
+		    {"host":"localhost", "port":"8130"}
+		]
+	}
+}
