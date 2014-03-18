@@ -9,6 +9,8 @@
 		    {"host":"141.1.1.1", "port":"8128"},
 		    {"host":"141.1.1.1", "port":"8129"},
 		    {"host":"141.1.1.1", "port":"8130"}
-		]
+		],
+		"monitoringNodeBase": "leave_empty_for_no_monitoring",
+		"aggregatorTimeout": "5000"
 	}
 }

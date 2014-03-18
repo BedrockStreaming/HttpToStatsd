@@ -30,6 +30,10 @@ export NODE_ENV=production
 node app
 ```
 
+```
+node app
+``
+
 ## increment
 
 ```

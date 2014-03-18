@@ -2,5 +2,7 @@
 *~
 ._.DS_Store
 !.gitkeep
+<<<<<<< HEAD
 node_modules/
 config/runtime.json
+
