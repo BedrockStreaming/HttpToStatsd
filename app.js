@@ -16,7 +16,9 @@ var app = express();
 var StatsD = require('node-statsd').StatsD,
 clientStatsd = new StatsD();
 
+// Create StatsdClient for dynamic host resolution
 var statsdHostResolver = new StatsdHostResolver(clientStatsd, config.statsdServers);
+// Create StatsdClient for increment aggregation
 var statsdAggregator   = new StatsDAggregator(statsdHostResolver, config.aggregatorTimeout);
 
 var statsdRouting = require('./lib/routes/statsd.js')(statsdAggregator, config);
