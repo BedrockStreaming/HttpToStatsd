@@ -12,7 +12,8 @@
     "sinon": "~1.7.3",
     "chai": "~1.8.1",
     "sinon-chai": "~2.4.0",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "supertest": "^0.9.2"
   },
   "devDependencies": {
     "mocha": "~1.14.0"
