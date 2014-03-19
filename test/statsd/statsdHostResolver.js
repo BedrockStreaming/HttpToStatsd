@@ -6,7 +6,7 @@ var mockedClientStatsd = {
     timing: function() {}
 };
 
-var StatsdHostResolver = require('../lib/statsdHostResolver.js');
+var StatsdHostResolver = require('../../lib/statsd/statsdHostResolver.js');
 
 describe('Test StatsdHostResolver class', function () {
 

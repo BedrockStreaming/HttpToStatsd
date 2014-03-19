@@ -4,8 +4,8 @@
 var config = require('config').Server;
 
 var crc32              = require('easy-crc32'),
-    StatsDAggregator   = require('./lib/statsdAggregator.js'),
-    StatsdHostResolver = require('./lib/statsdHostResolver.js');
+    StatsDAggregator   = require('./lib/statsd/statsdAggregator.js'),
+    StatsdHostResolver = require('./lib/statsd/statsdHostResolver.js');
 
 var security = require('./lib/security/security.js')(config.secretKey),
     middleware = require('./lib/middleware.js');
