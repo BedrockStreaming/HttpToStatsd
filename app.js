@@ -20,7 +20,7 @@ var app = express();
 var StatsD = require('node-statsd').StatsD,
 clientStatsd = new StatsD();
 
-var statsdAggregator = new StatsDAggregator(clientStatsd, 500);
+var statsdAggregator = new StatsDAggregator(clientStatsd, config.aggregatorTimeout);
 
 var statsdRouting = require('./lib/routes/statsd.js')(statsdAggregator, config);
 
