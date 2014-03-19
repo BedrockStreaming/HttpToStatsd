@@ -22,7 +22,7 @@ clientStatsd = new StatsD();
 
 var statsdAggregator = new StatsDAggregator(clientStatsd, 500);
 
-var statsdRouting = require('./lib/routes/statsd.js')(clientStatsd, config);
+var statsdRouting = require('./lib/routes/statsd.js')(statsdAggregator, config);
 
 app.get('/check', function (req, res){
     res.setHeader('Content-Type', 'text/plain');
