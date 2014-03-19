@@ -22,48 +22,22 @@ clientStatsd = new StatsD();
 
 var statsdAggregator = new StatsDAggregator(clientStatsd, 500);
 
+var statsdRouting = require('./lib/routes/statsd.js')(clientStatsd, config);
+
 app.get('/check', function (req, res){
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).end('OK');
 });
 
-app.get('/statsd/:node/increment', middleware.securityToken(security), function (req, res, next){
-    // get a statsdServer
-    statsdServer = getHost(req.params.node);
-    // reconfigure the statsd client
-    clientStatsd.host = statsdServer.host;
-    clientStatsd.port = statsdServer.port;
+app.get('/statsd/:node/increment',
+    middleware.securityToken(security),
+    statsdRouting.increment
+);
 
-    // fire the increment
-    statsdAggregator.increment(req.params.node);
-    // console.log('increment '+req.params.node+' node');
-
-    res.setHeader('Content-Type', 'image/jpeg');
-    res.setHeader('Content-Length', 0);
-    res.status(204).end('');
-
-    statsdAggregator.increment('service.httptostatsd.incr');
-});
-
-
-app.get('/statsd/:node/timer/:timing', middleware.securityToken(security, {valueParameter: 'timing'}), function (req, res, next){
-
-    // get a statsdServer
-    statsdServer = getHost(req.params.node);
-    // reconfigure the statsd client
-    clientStatsd.host = statsdServer.host;
-    clientStatsd.port = statsdServer.port;
-
-    // fire the time
-    clientStatsd.timing(req.params.node, req.params.timing);
-    // console.log('timing '+req.params.node+' node to '+req.params.timing+' ms');
-
-    res.setHeader('Content-Type', 'image/jpeg');
-    res.setHeader('Content-Length', 0);
-    res.status(204).end('');
-
-    statsdAggregator.increment('service.httptostatsd.timing');
-});
+app.get('/statsd/:node/timer/:timing',
+    middleware.securityToken(security, {valueParameter: 'timing'}),
+    statsdRouting.timing
+);
 
 
 var port = process.env.NODE_PORT || config.port;
