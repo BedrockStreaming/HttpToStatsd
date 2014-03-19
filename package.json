@@ -4,17 +4,19 @@
   "description": "HTTP service to log monitoring information to StatsD",
   "main": "app.js",
   "dependencies": {
-    "MD5": "~1.1.0",
+    "MD5"        : "~1.1.0",
     "node-statsd": "0.0.7",
-    "express": "~3.4.4",
-    "config": "~0.4.32",
-    "easy-crc32": "0.0.2",
-    "sinon": "~1.7.3",
-    "chai": "~1.8.1",
-    "sinon-chai": "~2.4.0"
+    "express"    : "~3.4.4",
+    "config"     : "~0.4.32",
+    "easy-crc32" : "0.0.2",
+    "underscore" : "^1.6.0"
   },
   "devDependencies": {
-    "mocha": "~1.14.0"
+    "mocha"     : "~1.14.0",
+    "sinon"     : "~1.7.3",
+    "chai"      : "~1.8.1",
+    "sinon-chai": "~2.4.0",
+    "supertest" : "^0.9.2"
   },
   "scripts": {
     "test": "mocha"

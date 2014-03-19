@@ -9,6 +9,8 @@
 		    {"host":"localhost", "port":"8128"},
 		    {"host":"localhost", "port":"8129"},
 		    {"host":"localhost", "port":"8130"}
-		]
+		],
+		"monitoringNodeBase": "leave_empty_for_no_monitoring",
+		"aggregatorTimeout": "5000"
 	}
 }
