@@ -6,7 +6,7 @@ var mockedClientStatsd = {
     timing: function() {}
 };
 
-var StatsdAggregator = require('../lib/statsdAggregator.js');
+var StatsdAggregator = require('../../lib/statsd/statsdAggregator.js');
 
 describe('Test statsdAggregator', function () {
 
