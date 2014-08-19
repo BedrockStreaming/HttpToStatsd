@@ -81,7 +81,7 @@ describe('Test SecurityTokenChecker middleware', function() {
             mockedResponse.status.should.have.been.calledWith(400);
         });
 
-        it('if req token equal to Security getToken value call next method and not send response', function() {
+        it('if req token equal to Security getToken value call next method and not send response (with value)', function() {
 
             var next = sinon.spy();
 
@@ -91,6 +91,19 @@ describe('Test SecurityTokenChecker middleware', function() {
 
             next.should.have.been.called;
             mockedSecurity.getToken.should.have.been.calledWith('NODE', 'VALUE');
+            mockedResponse.status.should.not.have.been.called;
+        });
+
+        it('if req token equal to Security getToken call next method (without value)', function() {
+            var next = sinon.spy();
+
+            var middleware = new SecurityTokenChecker(mockedSecurity, {valueParameter: 'test'});
+
+            middleware({query: {token:'VALID_TOKEN' }, params: {node: 'NODE'}}, mockedResponse, next);
+
+            next.should.have.been.called;
+            mockedSecurity.getToken.should.have.been.calledWith('NODE');
+            mockedSecurity.getToken.should.have.been.calledOnce;
             mockedResponse.status.should.not.have.been.called;
         });
     });
