@@ -71,6 +71,27 @@ md5sum(node + value + secretKey)
 
 for increment, value is ```'1'```
 
+
+## Rate limit
+
+``` js
+    "rateLimit": {
+        "enable": true,
+        "lookup": [
+            "connection.remoteAddress"
+        ],
+        "maxRequestsPerSeconds": 100,
+        "expire": 60,
+        "skipHeaders": true
+    }
+```
+
+ - `enable`: `Boolean` enable/disable rate limit feature
+ - `lookup`: `String|Array.<String>` value lookup on the request object. Can be a single value or array.
+ - `maxRequestsPerSeconds`: `Number` allowed number of requests before getting rate limited
+ - `expire`: `Number` amount of time in `s` before the rate-limited is reset (global reset)
+ - `skipHeaders`: `Boolean` whether to skip sending HTTP `X-Ratelimit` headers for rate limit
+
 ## Launch unit test
 
 ```
