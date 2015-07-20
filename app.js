@@ -16,6 +16,9 @@ var app = express();
 var StatsD = require('node-statsd').StatsD,
 clientStatsd = new StatsD();
 
+// rate limiting
+var ratelimit = require('./lib/security/ratelimit.js')(config, clientStatsd);
+
 // Create StatsdClient for dynamic host resolution
 var statsdHostResolver = new StatsdHostResolver(clientStatsd, config.statsdServers);
 // Create StatsdClient for increment aggregation
@@ -29,11 +32,13 @@ app.get('/check', function (req, res){
 });
 
 app.get('/statsd/:node/increment',
+    ratelimit,
     middleware.securityToken(security),
     statsdRouting.increment
 );
 
 app.get('/statsd/:node/timer/:timing',
+    ratelimit,
     middleware.securityToken(security, {valueParameter: 'timing'}),
     statsdRouting.timing
 );

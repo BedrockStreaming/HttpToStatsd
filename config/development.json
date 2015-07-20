@@ -1,16 +1,25 @@
 {
-	"Server": {
-		"port": 8080,
-		"secretKey": "raoulgotasecretkey",
-		"statsdServers": [
-		    {"host":"localhost", "port":"8125"},
-		    {"host":"localhost", "port":"8126"},
-		    {"host":"localhost", "port":"8127"},
-		    {"host":"localhost", "port":"8128"},
-		    {"host":"localhost", "port":"8129"},
-		    {"host":"localhost", "port":"8130"}
-		],
-		"monitoringNodeBase": "leave_empty_for_no_monitoring",
-		"aggregatorTimeout": "5000"
-	}
+    "Server": {
+        "port": 8080,
+        "secretKey": "raoulgotasecretkey",
+        "rateLimit": {
+            "enable": true,
+            "lookup": [
+                "connection.remoteAddress"
+            ],
+            "maxRequestsPerSeconds": 100,
+            "expire": 60,
+            "skipHeaders": false
+        },
+        "statsdServers": [
+            {"host":"localhost", "port":"8125"},
+            {"host":"localhost", "port":"8126"},
+            {"host":"localhost", "port":"8127"},
+            {"host":"localhost", "port":"8128"},
+            {"host":"localhost", "port":"8129"},
+            {"host":"localhost", "port":"8130"}
+        ],
+        "monitoringNodeBase": "leave_empty_for_no_monitoring",
+        "aggregatorTimeout": "5000"
+    }
 }
