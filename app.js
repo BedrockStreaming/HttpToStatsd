@@ -37,12 +37,29 @@ app.get('/statsd/:node/increment',
     statsdRouting.increment
 );
 
+app.get('/statsd/:node/decrement',
+    ratelimit,
+    middleware.securityToken(security),
+    statsdRouting.decrement
+);
+
 app.get('/statsd/:node/timer/:timing',
     ratelimit,
     middleware.securityToken(security, {valueParameter: 'timing'}),
     statsdRouting.timing
 );
 
+app.get('/statsd/:node/gaugor/:gauge',
+    ratelimit,
+    middleware.securityToken(security, {valueParameter: 'gauge'}),
+    statsdRouting.gauge
+);
+
+app.get('/statsd/:node/set/:set',
+    ratelimit,
+    middleware.securityToken(security, {valueParameter: 'set'}),
+    statsdRouting.set
+);
 
 var port = process.env.NODE_PORT || config.port;
 
