@@ -49,7 +49,7 @@ app.get('/statsd/:node/timer/:timing',
     statsdRouting.timing
 );
 
-app.get('/statsd/:node/gaugor/:gauge',
+app.get('/statsd/:node/gauge/:gauge',
     ratelimit,
     middleware.securityToken(security, {valueParameter: 'gauge'}),
     statsdRouting.gauge
