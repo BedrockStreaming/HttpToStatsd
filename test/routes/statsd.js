@@ -26,7 +26,7 @@
     app.get('/statsd/:node/increment', statsdRoutes.increment);
     app.get('/statsd/:node/decrement', statsdRoutes.decrement);
     app.get('/statsd/:node/timer/:timing', statsdRoutes.timing);
-    app.get('/statsd/:node/gaugor/:gauge', statsdRoutes.gauge);
+    app.get('/statsd/:node/gauge/:gauge', statsdRoutes.gauge);
     app.get('/statsd/:node/set/:set', statsdRoutes.set);
 
     describe('Test statsd routing', function () {
@@ -71,7 +71,7 @@
 
         it('should return a 204 and call statsdClient.gauge on gauge', function(done){
             request(app)
-                .get('/statsd/test/gaugor/1000')
+                .get('/statsd/test/gauge/1000')
                 .expect(204)
                 .end(function() {
                     mockedClientStatsd.gauge.should.have.been.calledWith('test', '1000');
