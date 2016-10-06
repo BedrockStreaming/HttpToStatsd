@@ -55,6 +55,12 @@ example
 /statsd/:node/timer/:timing?token=xxx
 ```
 
+### gauge
+
+```
+/statsd/:node/gauge/:gauge?token=xxx
+```
+
 example
 
 ```
