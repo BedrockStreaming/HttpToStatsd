@@ -12,4 +12,9 @@ describe('service-log', function() {
             assert.equal('C9307CB0A7A695B7F1258A669BD31C2B', security.getToken('stats_counts.test'));
         });
     });
+    describe('decodeNode method', function(){
+        it('should return the decoded node', function(){
+          assert.equal('raoul', security.decodeNode('cmFvdWw='));
+        });
+    });
 });

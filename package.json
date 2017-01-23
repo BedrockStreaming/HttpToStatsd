@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "MD5"        : "~1.1.0",
+    "js-base64"  : "2.1.9",
     "node-statsd": "0.0.7",
     "express"    : "~3.4.4",
     "config"     : "~0.4.32",

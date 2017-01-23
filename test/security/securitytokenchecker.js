@@ -11,6 +11,11 @@ var mockedSecurity = {
     getToken: function() {
 
         return 'VALID_TOKEN';
+    },
+
+    decodeNode: function() {
+
+        return 'sample.decoded.node';
     }
 };
 
@@ -30,6 +35,7 @@ describe('Test SecurityTokenChecker middleware', function() {
 
         //define spies
         sinon.spy(mockedSecurity, 'getToken');
+        sinon.spy(mockedSecurity, 'decodeNode');
         sinon.spy(mockedResponse, 'status');
 
     });
@@ -38,6 +44,7 @@ describe('Test SecurityTokenChecker middleware', function() {
         // reset spies
         mockedResponse.status.reset();
         mockedSecurity.getToken.reset();
+        mockedSecurity.decodeNode.reset();
     });
 
     describe('Test middleware with default value' , function() {
@@ -63,6 +70,20 @@ describe('Test SecurityTokenChecker middleware', function() {
 
             next.should.have.been.called;
             mockedResponse.status.should.not.have.been.called;
+        });
+    });
+
+    describe('Test middleware with an encoded node' , function() {
+        it('if the -encoded- request param is set to 1, call getToken with a decoded node', function() {
+
+            var next = sinon.spy();
+
+            var middleware = new SecurityTokenChecker(mockedSecurity, {valueParameter: 'test'});
+
+            middleware({query: {token:'VALID_TOKEN', encoded: '1'}, params: {node: 'c2FtcGxlLmRlY29kZWQubm9kZQ=='}}, mockedResponse, next);
+
+            mockedSecurity.getToken.should.have.been.calledWith('sample.decoded.node');
+            mockedSecurity.getToken.should.have.been.calledOnce;
         });
     });
 
