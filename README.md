@@ -49,7 +49,7 @@ example
 /statsd/raoul/increment?token=xxx
 ```
 
-### increment with a Base64 encoded node (prevents the request to be blocked by an ad blocker)
+### increment with a Base64 encoded node 
 
 ```
 /statsd/:base64EncodedNode/increment?token=xxx&encoded=1
