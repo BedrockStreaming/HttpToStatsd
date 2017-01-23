@@ -49,6 +49,19 @@ example
 /statsd/raoul/increment?token=xxx
 ```
 
+### increment with a Base64 encoded node
+
+```
+/statsd/:base64andUriEncodedNode/increment?token=xxx&encoded=1
+```
+
+example
+
+```
+/statsd/cmFvdWw=/increment?token=xxx&encoded=1
+```
+
+
 ### timer
 
 ```
