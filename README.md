@@ -41,13 +41,17 @@ node app
 
 ```
 /statsd/:node/increment?token=xxx
+/statsd/:node/increment/:delta?token=xxx
 ```
 
 example
 
 ```
 /statsd/raoul/increment?token=xxx
+/statsd/raoul/increment/123?token=xxx
 ```
+
+delta value specifies by how much counter is modified
 
 ### timer
 
