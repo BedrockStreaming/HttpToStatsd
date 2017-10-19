@@ -57,4 +57,15 @@ describe('Test statsdAggregator', function () {
         }, 500);
 
     });
+
+    it('should call statd client increment with value 123 when increment was called with delta 123', function(done) {
+        var statsdAggregator = new StatsdAggregator(mockedClientStatsd, 100);
+
+        statsdAggregator.increment('raoul', '123');
+
+        setTimeout(function() {
+            mockedClientStatsd.increment.should.have.been.calledWith('raoul', 123);
+            done();
+        }, 500);
+    });
 });
