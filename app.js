@@ -33,7 +33,13 @@ app.get('/check', function (req, res){
 
 app.get('/statsd/:node/increment',
     ratelimit,
-    middleware.securityToken(security),
+    //middleware.securityToken(security),
+    statsdRouting.increment
+);
+
+app.get('/statsd/:node/increment/:delta',
+    ratelimit,
+    //middleware.securityToken(security, {valueParameter: 'delta'}),
     statsdRouting.increment
 );
 
