@@ -37,6 +37,12 @@ app.get('/statsd/:node/increment',
     statsdRouting.increment
 );
 
+app.get('/statsd/:node/increment/:delta',
+    ratelimit,
+    middleware.securityToken(security, {valueParameter: 'delta'}),
+    statsdRouting.increment
+);
+
 app.get('/statsd/:node/decrement',
     ratelimit,
     middleware.securityToken(security),

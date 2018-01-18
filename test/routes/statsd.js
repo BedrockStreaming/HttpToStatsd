@@ -24,6 +24,7 @@
     // Test server
     var app = express();
     app.get('/statsd/:node/increment', statsdRoutes.increment);
+    app.get('/statsd/:node/increment/:delta', statsdRoutes.increment);
     app.get('/statsd/:node/decrement', statsdRoutes.decrement);
     app.get('/statsd/:node/timer/:timing', statsdRoutes.timing);
     app.get('/statsd/:node/gauge/:gauge', statsdRoutes.gauge);
@@ -55,6 +56,16 @@
                 .expect(204)
                 .end(function() {
                     mockedClientStatsd.increment.should.have.been.calledWith('test');
+                    done();
+                });
+        });
+
+        it('should return a 204 and call statsdClient.increment with delta on increment', function(done){
+            request(app)
+                .get('/statsd/test/increment/123')
+                .expect(204)
+                .end(function() {
+                    mockedClientStatsd.increment.should.have.been.calledWith('test', '123');
                     done();
                 });
         });
