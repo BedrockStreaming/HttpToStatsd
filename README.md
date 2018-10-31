@@ -8,7 +8,7 @@ With this server, you can send to it, asynchronous http request, from client-sid
 ## installation
 
 ```shell
-npm install
+yarn
 ```
 
 ... profit !
@@ -105,6 +105,6 @@ for increment, value is ```'1'```
 ## Launch unit test
 
 ```
-npm test
+yarn test
 ```
 
