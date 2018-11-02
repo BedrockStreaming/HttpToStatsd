@@ -5,7 +5,8 @@
   "main": "app.js",
   "engines": {
     "node": ">= 10.11.0",
-    "npm": ">= 6.4.1"
+    "npm": ">= 6.4.1",
+    "yarn": ">= 1.6"
   },
   "dependencies": {
     "MD5": "~1.1.0",
